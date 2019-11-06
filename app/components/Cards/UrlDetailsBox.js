@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Linking} from 'react-native';
 import {Card, Button} from 'react-native-elements';
 
 const style = StyleSheet.create({
@@ -23,11 +23,24 @@ const style = StyleSheet.create({
     flexDirection: 'column',
     marginTop: 15,
     marginRight: 5,
-    display: 'none',
+    // display: 'none',
   },
+  linkStyle: {color: 'blue'},
 });
 
 export default class UrlDetailsBox extends React.Component {
+  handleUrlClick(u) {
+    console.log('link clicked', this);
+    Linking.openURL(this.props.url);
+  }
+  constructor() {
+    super();
+
+    this.state = {
+      url: '',
+    };
+  }
+
   render() {
     return (
       <Card title="Your short URL">
@@ -39,7 +52,9 @@ export default class UrlDetailsBox extends React.Component {
         </View>
         <View style={style.longUrlContainer}>
           <Text>Long URL:</Text>
-          <Text />
+          <Text style={style.linkStyle} onPress={this.handleUrlClick}>
+            {this.state.url}
+          </Text>
         </View>
       </Card>
     );
