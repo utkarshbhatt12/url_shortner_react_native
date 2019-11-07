@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Card, Image} from 'react-native-elements';
+import {Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const style = StyleSheet.create({
@@ -10,12 +10,11 @@ const style = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    // borderColor: 'black',
-    // borderWidth: 1,
   },
-  childCard: {
-    borderColor: 'red',
-    borderWidth: 1,
+  childCard: {},
+  icon: {
+    fontSize: 250,
+    color: '#e3e3e3',
   },
 });
 
@@ -24,14 +23,9 @@ export default class EmptyImageCard extends React.Component {
     return (
       <View style={style.mainCard}>
         <View style={style.childCard}>
-          <Icon
-            size={150}
-            raised
-            name="glass"
-            type="font-awesome"
-            color="#e3e3e3"
-          />
+          <Icon style={style.icon} raised name="compress" type="font-awesome" />
         </View>
+        <Text>It appears that you have not created a URL yet.</Text>
       </View>
     );
   }

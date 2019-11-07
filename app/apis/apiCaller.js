@@ -1,5 +1,3 @@
-import {resolve} from 'url';
-
 const urlMaster = {
   CREATE_NEW:
     'https://us-central1-contactform-1b262.cloudfunctions.net/shortner',
@@ -20,24 +18,24 @@ const getUrlStats = async urlToCheck => {
 };
 
 const getNewShortUrl = async originalUrl => {
-  const uri = resolve(urlMaster.CREATE_NEW);
-  const result = await fetch(uri, {
-    originalUrl,
+  console.log('before fetch');
+  const result = await fetch(urlMaster.CREATE_NEW, {
+    body: {
+      originalUrl,
+    },
     method: 'POST',
   });
 
-  const {message, success} = await result.json();
+  console.log('after fetch');
 
-  if (!result.status.toString().startsWith('2')) {
-    throw new Error('Request rejected', message);
-  }
+  const {message, success} = await result.json();
+  console.log(message, success);
 
   return {message, success};
 };
 
 const getHistory = async uid => {
-  const uri = urlMaster.GET_HISTORY;
-  const result = await fetch(uri);
+  const result = await fetch(urlMaster.GET_HISTORY);
   const {message, success} = await result.json();
 
   if (!result.status.toString().startsWith('2')) {
@@ -50,6 +48,7 @@ const getHistory = async uid => {
 const ApiCaller = async (action, params) => {
   try {
     if (action === 'CREATE') {
+      console.log('Creator called');
       return getNewShortUrl(params.originalUrl);
     }
 
@@ -60,6 +59,8 @@ const ApiCaller = async (action, params) => {
     if (action === 'GET_HISTORY') {
       return getHistory(params.uid);
     }
+
+    console.log('ApiCaller called with invalid params');
   } catch (error) {
     console.error('error', error);
   }

@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Text, StyleSheet, Linking} from 'react-native';
-import {Card, Button} from 'react-native-elements';
+import {View, StyleSheet, Linking} from 'react-native';
+import {Card, Button, Text} from 'react-native-elements';
 
 const style = StyleSheet.create({
   urlContainer: {
@@ -19,13 +19,16 @@ const style = StyleSheet.create({
     paddingLeft: 5,
     fontSize: 16,
   },
+  linkStyle: {
+    color: 'blue',
+  },
   longUrlContainer: {
+    display: 'flex',
     flexDirection: 'column',
     marginTop: 15,
     marginRight: 5,
     // display: 'none',
   },
-  linkStyle: {color: 'blue'},
 });
 
 export default class UrlDetailsBox extends React.Component {
@@ -48,11 +51,11 @@ export default class UrlDetailsBox extends React.Component {
           <Text style={style.resultUrlText} selectable>
             https://00el6bf.site/NKk77s
           </Text>
-          <Button title="Copy" />
+          <Button onPress={this.buttonOnPress} title="Copy" />
         </View>
         <View style={style.longUrlContainer}>
           <Text>Long URL:</Text>
-          <Text style={style.linkStyle} onPress={this.handleUrlClick}>
+          <Text h4 style={style.linkStyle} onPress={this.handleUrlClick}>
             {this.state.url}
           </Text>
         </View>

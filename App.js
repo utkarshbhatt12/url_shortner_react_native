@@ -10,7 +10,7 @@ import {
 import UrlInputBox from './app/components/Cards/UrlInputBox';
 import Nav from './app/components/Navigation/BottomNavigation';
 import UrlDetailsBox from './app/components/Cards/UrlDetailsBox';
-// import EmptyImageCard from './app/components/Cards/EmptyImageCard';
+import EmptyImageCard from './app/components/Cards/EmptyImageCard';
 
 const style = StyleSheet.create({
   container: {
@@ -20,12 +20,12 @@ const style = StyleSheet.create({
   headerImage: {
     height: Dimensions.get('window').height / 4,
   },
-  navBar: {
-    // borderColor: 'green',
-    // borderWidth: 1,
-  },
+  navBar: {},
   urlBoxContainer: {
-    marginTop: -40,
+    marginTop: -50,
+  },
+  urlDetails: {
+    // display: 'none',
   },
 });
 
@@ -40,7 +40,7 @@ export default class main extends Component {
           />
           <View style={style.urlBoxContainer}>
             <UrlInputBox />
-            <UrlDetailsBox />
+            {/* <UrlDetailsBox style={style.urlDetails} /> */}
             {/* <EmptyImageCard /> */}
           </View>
         </ScrollView>
