@@ -41,7 +41,7 @@ cd android && ./gradlew assembleDebug
 
 * This will generate the app-debug.apk in the `app/build/outputs/apk/debug/app-debug.apk` directory.
 
-* Navigate to `app/build/outputs/apk/debug/` . Run the following:
+* Navigate to `android/app/build/outputs/apk/debug/` . Run the following:
 
 ``` 
 adb install app-debug.apk
