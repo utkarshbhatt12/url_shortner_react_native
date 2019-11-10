@@ -20,12 +20,7 @@ const style = StyleSheet.create({
     paddingTop: 10,
   },
   resultUrlText: {
-    // paddingBottom: 10,
     flex: 1,
-    // borderColor: '#e3e3e3',
-    // borderWidth: 1,
-    // marginRight: 4,
-    // paddingLeft: 4,
     fontSize: 18,
     padding: 4,
   },
