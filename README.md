@@ -2,6 +2,31 @@
 
 * A url shortner built with react native (frontend) and Firebase Cloud Functions (backend).
 
+## Project Setup
+
+1. Clone the repo to your device using
+
+``` 
+git clone https://github.com/utkarshbhatt12/url_shortner_react_native
+```
+
+2. `cd app && npm install && cd .. && cd backend/functions && npm install` 
+3. Follow the [Official Firebase Admin SDK setup](https://firebase.google.com/docs/admin/setup) guide.
+4. Place your service account key (**rename** to `service_acc.json` ) in the functions/src folder.
+5. Run
+
+``` 
+firebase deploy --only functions,hosting
+```
+
+6. Connect your Android device to your PC and run the following command.
+
+``` 
+cd app && react-native run-android
+```
+
+Your app should be installed.
+
 ## Backend APIs
 
 ### `/shortner` 
@@ -145,27 +170,6 @@
 
 * The `rewrites` section in this json does all the work. Basically anything in front of the `/` of our default domain will trigger the `redirector` cloud function.
 
-## Project Setup
+## License
 
-1. Clone the repo to your device using
-
-``` 
-git clone https://github.com/utkarshbhatt12/url_shortner_react_native
-```
-
-2. `cd app && npm install && cd .. && cd backend/functions && npm install` 
-3. Follow the [Official Firebase Admin SDK setup](https://firebase.google.com/docs/admin/setup) guide.
-4. Place your service account key (**rename** to `service_acc.json` ) in the functions/src folder.
-5. Run
-
-``` 
-firebase deploy --only functions,hosting
-```
-
-6. Connect your Android device to your PC and run the following command.
-
-``` 
-cd app && react-native run-android
-```
-
-Your app should be installed.
+[MIT License](./LICENSE)
