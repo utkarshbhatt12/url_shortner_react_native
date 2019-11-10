@@ -27,6 +27,28 @@ cd app && react-native run-android
 
 Your app should be installed.
 
+## Build debug apk
+
+* Go to the main project directory in `/app` and run the following commands
+
+``` 
+// source: https://stackoverflow.com/a/56520717/2758318
+react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
+
+cd android && ./gradlew assembleDebug
+
+```
+
+* This will generate the app-debug.apk in the `app/build/outputs/apk/debug/app-debug.apk` directory.
+
+* Navigate to `app/build/outputs/apk/debug/` . Run the following:
+
+``` 
+adb install app-debug.apk
+```
+
+* This will install the debug apk on your device.
+
 ## Backend APIs
 
 ### `/shortner` 
