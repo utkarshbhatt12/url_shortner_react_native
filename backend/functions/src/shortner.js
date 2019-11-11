@@ -81,7 +81,7 @@ const shortner = async (req, res) => {
       });
   }
 
-  const originalUrl = getCleanUrl(req.body.url);
+  const { url: originalUrl } = req.body;
   const shortId = await getShortId();
 
   await mapper({
