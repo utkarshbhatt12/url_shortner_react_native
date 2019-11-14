@@ -8,9 +8,10 @@ import {
   Dimensions,
   Alert,
 } from 'react-native';
-import {Input, Button} from 'react-native-elements';
+import {Input, Button, Text} from 'react-native-elements';
 import UrlInputBox from './app/components/Cards/UrlInput';
 import LinkHistory from './app/components/History/List';
+import Spinner from './app/components/Loaders/Spinner';
 import './app/Firebase/Firebase';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const firebase = require('firebase/app');
@@ -33,6 +34,12 @@ const style = StyleSheet.create({
   icon: {
     fontSize: 20,
     marginRight: 10,
+  },
+  loaderContainer: {
+    flex: 1,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
@@ -61,6 +68,7 @@ const userIcon = <Icon style={style.icon} name="user" />;
 const padlockIcon = <Icon style={style.icon} name="lock" />;
 const envelopeIcon = <Icon style={style.icon} name="envelope-o" />;
 const gearIcon = <Icon style={style.icon} name="gear" />;
+
 export default class main extends Component {
   constructor() {
     super();
@@ -75,7 +83,6 @@ export default class main extends Component {
   }
 
   authObserver = async user => {
-    // if (user && !this.state.user) {
     if (user) {
       const idToken = await user.getIdToken(true);
 
@@ -177,7 +184,13 @@ export default class main extends Component {
   render() {
     if (this.state.isLoading) {
       console.log('in loading...');
-      return null;
+
+      return (
+        <View style={style.loaderContainer}>
+          <Spinner />
+          <Text>Loading...</Text>
+        </View>
+      );
     }
 
     if (!this.state.user) {
